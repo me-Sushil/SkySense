@@ -11,3 +11,6 @@ const getAll = () => {
   return axios.get(url).then((response)=>response.data).catch((error)=>console.log("error on response", error));
 };
 export default { getAll };
+
+
+//http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}

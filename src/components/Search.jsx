@@ -1,13 +1,17 @@
 // import searchlogo from "../assets/Search.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import getService from "../services/data";
 const Search=()=>{
-const [search, setSearch] = useState("");
-  const searchItem =()=>{
-    //experiment not done yet
+    const [search, setSearch] = useState("");
+     useEffect(()=>{
     getService.getAll().then(response=>response);
-    setSearch("");
-  }
+   setSearch("");
+})
+
+const searchItem =()=>{
+    //experiment not done yet  
+ }
+  
     return(
         <>
         <div>
