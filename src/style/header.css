@@ -1,0 +1,16 @@
+.header{
+  height: 50px;
+  width: 100%;
+  background-color: black;
+  display:flex;
+align-items:center;
+}
+
+.logo {
+  height: 34px;
+  padding: 7px;
+}
+.projectName{
+    color: blue;
+    font-family: "Jacquard 24", cursive;
+}

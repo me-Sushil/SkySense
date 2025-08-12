@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/jacquard-24": "^5.2.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
