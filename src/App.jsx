@@ -1,13 +1,15 @@
 import Header from "./components/Header"
+import Search from "./components/Search";
+import "./App.css";
+
 function App() {
-  //const [count, setCount] = useState(0)
+
 
   return (
     <>
       <Header />
-        
-      
-      <h1>SkySense</h1>
+      <Search />
+
       
     </>
   )

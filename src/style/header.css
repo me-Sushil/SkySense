@@ -1,16 +1,38 @@
 .header{
   height: 50px;
-  width: 100%;
+  /* width: 100%; */
   background-color: black;
+  justify-content: space-between; 
   display:flex;
-align-items:center;
+  align-items:center;
+  padding: 10px 20px;
 }
 
 .logo {
-  height: 34px;
+  height: 54px;
   padding: 7px;
+  margin-right: 10px;
 }
 .projectName{
+    font-size: 38px;
     color: blue;
     font-family: "Jacquard 24", cursive;
+}
+.mood{
+  display: flex;
+  gap: 10px;
+  height: 42px;
+  width: 95px;
+  background-color: #444444;
+  border-radius: 55px;
+}
+.darkmood, .lightmood {
+  height: 24px;
+  align-items: center;
+  justify-items: center;
+  cursor: pointer;
+}
+.left-section {
+  display: flex;
+  align-items: center;
 }
