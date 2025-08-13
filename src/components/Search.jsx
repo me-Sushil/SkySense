@@ -40,17 +40,17 @@ const Search = () => {
         console.log(response.data);
       });
 
-    // if (city.country === "NP") {
-      axios
-        .get(
-           `https://api.waqi.info/feed/${searchQry}/?token=c6b3f4fa907564603e0e27b8bee35f9051fdc35f`// waqi AQI api provider but there is no data of nepal
-          //`https://api.waqi.info/feed/@H9468/?token=c6b3f4fa907564603e0e27b8bee35f9051fdc35f`// American ambessy AQI in nepal ambessy area only
-        )
-        .then((response) => {
-          setAQIData(response.data);
-          console.log("AQI data api without nepali data",response.data);
-        });
-    // } else {
+    // // if (city.country === "NP") {
+    //   axios
+    //     .get(
+    //        `https://api.waqi.info/feed/${searchQry}/?token=c6b3f4fa907564603e0e27b8bee35f9051fdc35f`// waqi AQI api provider but there is no data of nepal
+    //       //`https://api.waqi.info/feed/@H9468/?token=c6b3f4fa907564603e0e27b8bee35f9051fdc35f`// American ambessy AQI in nepal ambessy area only
+    //     )
+    //     .then((response) => {
+    //       setAQIData(response.data);
+    //       console.log("AQI data api without nepali data",response.data);
+    //     });
+    // // } else {
 
     axios
       .get(
