@@ -1,6 +1,6 @@
 const WeatherCard = ({ weatherResult }) => {
   if (!weatherResult) {
-    return <p>Loading weather...</p>;
+    return <p>Loading weather</p>;
   }
   const sunrise = weatherResult?.sys?.sunrise;
   const sunset = weatherResult?.sys?.sunset;
