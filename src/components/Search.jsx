@@ -6,6 +6,7 @@ const Search = () => {
   const [searchQry, setSearchQry] = useState("");
   const [weatherResult, setWeatherResult] = useState([]);
   const [city, setCity] = useState([]);
+  const [aqi, setAQI] = useState([]);
   const apiKey = "2e2c4ac74b20deb70c35de523b8e2367";
 
   useEffect(() => {
@@ -34,10 +35,19 @@ const Search = () => {
       .get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
       )
-      .then((response) =>{
+      .then((response) => {
         setWeatherResult(response.data);
-       console.log(response.data);
-    });
+        console.log(response.data);
+      });
+
+    axios
+      .get(
+        `https://api.waqi.info/feed/${searchQry}/?token=c6b3f4fa907564603e0e27b8bee35f9051fdc35f`
+      )
+      .then((response) => {
+        setAQI(response.data);
+        console.log(response.data);
+      });
   };
 
   return (
@@ -54,19 +64,22 @@ const Search = () => {
         ></input>
       </div>
       <div>
-      {city.length > 0 ? (
-        <ul>
-          {city.map((city, index) => (
-            <li key={index} onClick={() => handleCityClick(city.lat, city.lon)}>
-              {city.name}, {city.country}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>{searchQry} No results found</p>
-      )}
+        {city.length > 0 ? (
+          <ul>
+            {city.map((city, index) => (
+              <li
+                key={index}
+                onClick={() => handleCityClick(city.lat, city.lon)}
+              >
+                {city.name}, {city.country}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>{searchQry} No results found</p>
+        )}
       </div>
-      <WeatherCard weatherResult={weatherResult} />
+      <WeatherCard aqi={aqi} weatherResult={weatherResult} />
     </>
   );
 };
