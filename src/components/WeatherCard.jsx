@@ -16,7 +16,7 @@ const WeatherCard = ({ weatherResult, aqi }) => {
         <li>Wind speed : {weatherResult?.wind?.speed}m/s</li>
         <li>Sunrise : {sunriseDate}</li>
         <li>Sunset : {sunsetDate}</li>
-        <li>AQI {aqi?.data?.aqi}</li>
+        <li>AQI {aqi?.list[0]?.main?.aqi}</li>
       </ul>
     </>
   );
