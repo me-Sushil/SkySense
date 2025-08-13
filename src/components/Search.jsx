@@ -40,30 +40,28 @@ const Search = () => {
         console.log(response.data);
       });
 
-    if (city.country === "NP") {
-      axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`
-
-          //`https://api.waqi.info/feed/@H9468/?token=c6b3f4fa907564603e0e27b8bee35f9051fdc35f`
-        )
-        .then((response) => {
-          setAQIData(response.data);
-          console.log("nepali data api",response.data);
-        });
-    } else {
-      axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`
-
-           //`https://api.waqi.info/feed/${searchQry}/?token=c6b3f4fa907564603e0e27b8bee35f9051fdc35f`
-        )
-        .then((response) => {
-          setAQIData(response.data);
-          console.log("world data api",response.data);
-        });
-    }
+    // if (city.country === "NP") {
+    //   axios
+    //     .get(
+    //        //`https://api.waqi.info/feed/${searchQry}/?token=c6b3f4fa907564603e0e27b8bee35f9051fdc35f`// waqi AQI api provider but there is no data of nepal
+    //       //`https://api.waqi.info/feed/@H9468/?token=c6b3f4fa907564603e0e27b8bee35f9051fdc35f`// American ambessy AQI in nepal ambessy area only
+    //     )
+    //     .then((response) => {
+    //       setAQIData(response.data);
+    //       console.log("nepali data api",response.data);
+    //     });
+    // } else {
+      
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`
+      )
+      .then((response) => {
+        setAQIData(response.data);
+        console.log("world data AQI api including nepal", response.data);
+      });
   };
+
   return (
     <>
       <div>
