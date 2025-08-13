@@ -20,4 +20,5 @@ const WeatherCard = ({ weatherResult }) => {
     </>
   );
 };
+
 export default WeatherCard;
