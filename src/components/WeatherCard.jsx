@@ -1,4 +1,4 @@
-const WeatherCard = ({ weatherResult, aqiData }) => {
+const WeatherCard = ({ weatherResult, aqi }) => {
   if (!weatherResult) {
     return <p>Loading weather</p>;
   }
@@ -16,7 +16,7 @@ const WeatherCard = ({ weatherResult, aqiData }) => {
         <li>Wind speed : {weatherResult?.wind?.speed}m/s</li>
         <li>Sunrise : {sunriseDate}</li>
         <li>Sunset : {sunsetDate}</li>
-        <li>AQI {aqiData?.data?.aqi}</li>
+        <li>AQI {aqi?.data?.aqi}</li>
       </ul>
     </>
   );
