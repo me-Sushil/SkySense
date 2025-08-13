@@ -1,5 +1,6 @@
 // import searchlogo from "../assets/Search.png";
 import { useEffect, useState } from "react";
+import WeatherCard from "./WeatherCard";
 import axios from "axios";
 const Search = () => {
   const [searchQry, setSearchQry] = useState("");
@@ -31,7 +32,7 @@ const Search = () => {
     setCity([]);
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
       )
       .then((response) =>{
         setWeatherResult(response.data);
