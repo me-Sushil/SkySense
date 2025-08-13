@@ -65,7 +65,7 @@ const Search = () => {
         <p>{searchQry} No results found</p>
       )}
       </div>
-      <WeatherCard />
+      <WeatherCard weatherResult={weatherResult} />
     </>
   );
 };
