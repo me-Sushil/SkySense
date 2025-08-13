@@ -5,8 +5,8 @@ const WeatherCard=({weatherResult})=>{
     return(
         <>
         <ul>
-            <li>{weatherResult?.main?.temp}</li>
-            <li>{weatherResult?.main?.temp}</li>
+            <li>Tempreture : {weatherResult?.main?.temp}</li>
+            <li>Weather condition : {weatherResult?.weather[0]?.description}</li>
             <li>{weatherResult?.main?.temp}</li>
             <li>{weatherResult?.main?.temp}</li>
             <li>{weatherResult?.main?.temp}</li>
