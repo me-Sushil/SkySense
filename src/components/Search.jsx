@@ -1,14 +1,15 @@
+
 // import searchlogo from "../assets/Search.png";
 import { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 import axios from "axios";
 const Search = () => {
-  const [searchQry, setSearchQry] = useState("");
+  const [searchQry, setSearchQry] = useState("Kathmandu");
   const [weatherResult, setWeatherResult] = useState([]);
   const [city, setCity] = useState([]);
   const [aqiData, setAQIData] = useState([]);
   const apiKey = "2e2c4ac74b20deb70c35de523b8e2367";
-
+ 
   useEffect(() => {
     if (!searchQry) {
       setCity([]);
@@ -21,6 +22,7 @@ const Search = () => {
       axios
         .get(geourl)
         .then((response) => {
+             
           setCity(response.data);
           console.log(response.data, "response data");
         })
@@ -61,6 +63,8 @@ const Search = () => {
         console.log("world data AQI api including nepal", response.data);
       });
   };
+
+
 
   return (
     <>
