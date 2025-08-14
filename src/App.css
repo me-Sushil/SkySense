@@ -33,11 +33,10 @@ input[type="text"]::placeholder {
   min-width: 200px;
 }
 
-
 /* Main container */
 .weatherCard {
   max-width: 800px;
-  margin: auto;
+  margin:auto;/* auto */
   padding: 20px;
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.28);
@@ -46,6 +45,26 @@ input[type="text"]::placeholder {
   gap: 20px; /* space between left & right */
   align-items: flex-start; /* top aligned */
 }
+/* Top weather header card (aligned with weatherCard width) */
+.weatherCardHeader {
+  max-width: 800px;              /* same as weatherCard */
+  width: 100%;                    /* full width up to max-width */
+  height: 40px;                   /* small height */
+ /*  margin: 0 auto;                 /* center horizontally */
+  border-radius: 15px;
+  background: rgba(0, 20, 60, 0.8);  /* semi-transparent dark blue */
+  color: white;
+  display: flex;
+  align-items: center;            /* vertically center text */
+  justify-content: center;        /* horizontally center text */
+  font-size: 1rem;                /* adjust as needed */
+  position: fixed;                /*stay on top*/
+  /* top: 0; */
+  left: 50%;                       /* start at center */
+  transform: translateX(-50%);    /* center horizontally */
+  z-index: 1000;                  /* above everything else */
+}
+
 
 /* LEFT column inside .weatherCard */
  .weatherCard-left { 

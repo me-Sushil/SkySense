@@ -48,6 +48,7 @@ const WeatherCard = ({ weatherResult, aqi }) => {
   return (
     <>
       <div className="weatherCard">
+        <div className="weatherCardHeader">Weather Details</div>
         <div className="weatherCard-left">
           <div className="mainWeatherInfo">
             <p>
