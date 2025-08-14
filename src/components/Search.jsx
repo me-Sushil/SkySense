@@ -98,6 +98,7 @@ axios
         setAQIData(response.data);
         console.log("world data AQI api including nepal", response.data);
       });
+      setSearchQry("");
   };
 
 
@@ -127,7 +128,8 @@ axios
             ))}
           </ul>
         ) : (
-          <p>{searchQry} No results found</p>
+          console.log("no result found")
+          // <p>{searchQry} No results found</p>
         )}
       </div>
       </div>

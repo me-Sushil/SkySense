@@ -62,8 +62,6 @@ const WeatherCard = ({ weatherResult, aqi }) => {
             </p>
             <p> Humidity : {weatherResult?.main?.humidity}%</p>
             <p> Wind speed : {windSpeedKM}km/h</p>
-            <p> Sunrise : {sunriseDate}</p>
-            <p> Sunset : {sunsetDate}</p>
             <p> AQI : {aqiVal}</p>
           </div>
           <div className="bigData">
@@ -72,16 +70,16 @@ const WeatherCard = ({ weatherResult, aqi }) => {
                 margin: "10px 0",}}>{displayTempData}</p>{weatherResult.name}</div>
         </div>
         <div className="recentSearchCity">
-          <p>
-            Tempreture : {displayTempData}
-            <button className="BTN" onClick={changeTempreture}>
-              toggle
-            </button>
-          </p>
-          <p> Weather condition : {weatherResult?.weather?.[0]?.description}</p>
-          <p> Humidity : {weatherResult?.main?.humidity}%</p>
-          <p> Wind speed : {windSpeedKM}km/h</p>
+          <p style={{
+                fontSize: "19px",
+                fontWeight:"bold",}}> Last 5 searched Cities</p>
+          <p>{recentSearchCity}</p>
+
+          <p style={{
+                fontSize: "19px",
+                fontWeight:"bold",}}>Sun Times in {weatherResult.name}</p>
           <p> Sunrise : {sunriseDate}</p>
+            <p> Sunset : {sunsetDate}</p>
         </div>
       </div>
     </>

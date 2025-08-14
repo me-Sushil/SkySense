@@ -8,6 +8,11 @@ body {
   /* background-color: rgba(0, 0, 0, 0.22); */
 }
 
+.mainWeatherInfo{
+    margin-top: 60px;
+
+}
+
 /* Search Bar */
 input[type="text"] {
   width: 60%;
@@ -54,10 +59,11 @@ input[type="text"]::placeholder {
   border-radius: 15px;
   background: rgba(0, 20, 60, 0.8);  /* semi-transparent dark blue */
   color: white;
+  font-weight: bold;
   display: flex;
   align-items: center;            /* vertically center text */
   justify-content: center;        /* horizontally center text */
-  font-size: 1rem;                /* adjust as needed */
+  font-size: 33px;                /* adjust as needed */
   position: fixed;                /*stay on top*/
   /* top: 0; */
   left: 50%;                       /* start at center */
@@ -125,10 +131,13 @@ input[type="text"]::placeholder {
 
 .BTN{
   background-color: rgba(0, 0, 0, 0.22);
-  border-radius: 55px;
+  border-radius: 45px;
   border-width: 0cap;
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 26px;
-  width: 50px;
+  width: 60px;
   font-weight: bold;
   color: aliceblue;
 }
@@ -138,6 +147,7 @@ input[type="text"]::placeholder {
   flex: 0 0 250px; /* fixed width */
   background:rgba(0, 0, 0, 0.22);
   border-radius: 10px;
+  margin-top: 60px;
   padding: 10px;
   color: white;
   max-height: 300px;
