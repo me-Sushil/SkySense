@@ -9,7 +9,7 @@ body {
 }
 
 .mainWeatherInfo{
-    margin-top: 60px;
+    margin-top: 20px;
     color: white;
 
 }
@@ -53,9 +53,12 @@ input[type="text"]::placeholder {
 }
 /* Top weather header card (aligned with weatherCard width) */
 .weatherCardHeader {
-  max-width: 800px;              /* same as weatherCard */
-  width: 100%;                    /* full width up to max-width */
-  height: 40px;                   /* small height */
+  max-width: 840px;              /* same as weatherCard */
+  width: 100%;  
+  margin-top: -20px; 
+  /* margin-left: -10px; */
+  margin-right: -30px;                 /* full width up to max-width */
+  height: 45px;                   /* small height */
  /*  margin: 0 auto;                 /* center horizontally */
   border-radius: 15px;
   background: rgba(0, 20, 60, 0.8);  /* semi-transparent dark blue */
@@ -65,7 +68,7 @@ input[type="text"]::placeholder {
   align-items: center;            /* vertically center text */
   justify-content: center;        /* horizontally center text */
   font-size: 33px;                /* adjust as needed */
-  position: fixed;                /*stay on top*/
+  position: fixed;               /* stay on top*/
   /* top: 0; */
   left: 50%;                       /* start at center */
   transform: translateX(-50%);    /* center horizontally */
@@ -148,11 +151,11 @@ input[type="text"]::placeholder {
   flex: 0 0 250px; /* fixed width */
   background:rgba(0, 0, 0, 0.22);
   border-radius: 10px;
-  margin-top: 60px;
+  margin-top: 30px;
   padding: 10px;
   color: white;
-  max-height: 300px;
-  overflow-y: auto;
+  max-height: 320px;
+  /* overflow-y: auto; */
   box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
 }
 

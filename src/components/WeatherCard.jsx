@@ -8,7 +8,21 @@ const WeatherCard = ({ weatherResult, aqi }) => {
   //   return <p>Loading weather</p>;
   // }
   console.log(weatherResult.name, "test for city");
-  const recentSearchCity = JSON.parse(localStorage.getItem("city"));
+  // const recentSearchCity = JSON.parse(localStorage.getItem("city"));
+  const items = Object.keys(localStorage).map((key) => {
+    let data = JSON.parse(localStorage.getItem(key));
+    return { key, time: data.time };
+  });
+
+  items.sort((a, b) => b.time - a.time);
+  items.slice(5).forEach((item) => localStorage.removeItem(item.key));
+  //  console.log(items.key.name, "this is recent search data");
+
+  const fiveItems = Object.keys(localStorage).map((key) => {
+    let data = JSON.parse(localStorage.getItem(key));
+    return { key, time: data.time };
+  });
+
   const sunrise = weatherResult?.sys?.sunrise;
   const sunset = weatherResult?.sys?.sunset;
   const windSpeedKM = (weatherResult?.wind?.speed * 3.6).toFixed(2);
@@ -65,21 +79,41 @@ const WeatherCard = ({ weatherResult, aqi }) => {
             <p> AQI : {aqiVal}</p>
           </div>
           <div className="bigData">
-            <p style={{
+            <p
+              style={{
                 fontSize: "66px",
-                margin: "10px 0",}}>{displayTempData}</p>{weatherResult.name}</div>
+                margin: "10px 0",
+              }}
+            >
+              {displayTempData}
+            </p>
+            {weatherResult.name}
+          </div>
         </div>
         <div className="recentSearchCity">
-          <p style={{
-                fontSize: "19px",
-                fontWeight:"bold",}}> Last 5 searched Cities</p>
-          <p>{recentSearchCity}</p>
-
-          <p style={{
-                fontSize: "19px",
-                fontWeight:"bold",}}>Sun Times in {weatherResult.name}</p>
+          <p
+            style={{
+              fontSize: "19px",
+              fontWeight: "bold",
+              marginTop:"3px"
+            }}
+          >
+            Last 5 searched Cities
+          </p>
+          {/* <p>{recentSearchCity}</p> */}
+          {fiveItems.map((val) => {
+            return <p key={val.key} >{val.key}</p>;
+          })}
+          <p
+            style={{
+              fontSize: "19px",
+              fontWeight: "bold",
+            }}
+          >
+            Sun Times in {weatherResult.name}
+          </p>
           <p> Sunrise : {sunriseDate}</p>
-            <p> Sunset : {sunsetDate}</p>
+          <p> Sunset : {sunsetDate}</p>
         </div>
       </div>
     </>

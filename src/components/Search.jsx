@@ -67,7 +67,10 @@ axios
 
 
   const handleCityClick = (city, lat, lon) => {
-    localStorage.setItem("city", JSON.stringify(city));
+    localStorage.setItem(`${city}`, JSON.stringify({
+  name: `${city}`,
+  time: Date.now()
+}));
     setCity([]);
     axios
       .get(
