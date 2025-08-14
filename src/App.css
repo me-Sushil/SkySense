@@ -1,9 +1,22 @@
 #root {
   width: 100%;
-  background-color: rgb(99, 87, 87);
+  /* background-color: rgb(99, 87, 87); */
   /* max-width: 1280px; */
   /* margin: 0 auto; */
   /* padding: 2rem; */
   /* text-align: center; */
+
+   
+    /* height: 100vh; */
+}
+.weatherCard{
+  width: 80%;
+  /* background-size: cover;  */
+    /* background-position: center;  */
+    /* background-repeat: no-repeat;  */
+    background-color: rgba(0, 0, 0, 0.22);
+    align-items: center;
+    /* justify-content: center; */
+/* justify-items: center; */
 }
 

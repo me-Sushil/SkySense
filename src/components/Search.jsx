@@ -95,7 +95,9 @@ const Search = () => {
           <p>{searchQry} No results found</p>
         )}
       </div>
+      <div className="weatherCard">
       <WeatherCard aqi={aqiData} weatherResult={weatherResult} />
+    </div>
     </>
   );
 };
