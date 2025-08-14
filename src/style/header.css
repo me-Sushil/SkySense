@@ -20,6 +20,8 @@
 }
 .mood{
   display: flex;
+  align-items: center;
+  justify-items: center;
   gap: 10px;
   height: 42px;
   width: 95px;
@@ -35,4 +37,13 @@
 .left-section {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
+
+
+
+
+
+
+
+

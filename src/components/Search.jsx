@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 import axios from "axios";
 const Search = () => {
-  const [searchQry, setSearchQry] = useState("Kathmandu");
+  const [searchQry, setSearchQry] = useState("");
   const [weatherResult, setWeatherResult] = useState([]);
   const [city, setCity] = useState([]);
   const [aqiData, setAQIData] = useState([]);
@@ -32,6 +32,7 @@ const Search = () => {
   }, [searchQry]);
 
   const handleCityClick = (lat, lon) => {
+    
     setCity([]);
     axios
       .get(
@@ -78,12 +79,11 @@ const Search = () => {
             setSearchQry(event.target.value);
           }}
         ></input>
-      </div>
-      <div>
+        <div className="findCity">
         {city.length > 0 ? (
           <ul>
             {city.map((city, index) => (
-              <li
+              <li 
                 key={index}
                 onClick={() => handleCityClick(city.lat, city.lon)}
               >
@@ -95,6 +95,8 @@ const Search = () => {
           <p>{searchQry} No results found</p>
         )}
       </div>
+      </div>
+      
       <div className="weatherCard">
       <WeatherCard aqi={aqiData} weatherResult={weatherResult} />
     </div>

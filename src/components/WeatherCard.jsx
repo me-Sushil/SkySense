@@ -1,9 +1,13 @@
 // import { useState } from "react";
+import "../App.css";
+
+
+import { useState } from "react";
 
 const WeatherCard = ({ weatherResult, aqi }) => {
-  if (!weatherResult) {
-    return <p>Loading weather</p>;
-  }
+  // if (!weatherResult) {
+  //   return <p>Loading weather</p>;
+  // }
   const sunrise = weatherResult?.sys?.sunrise;
   const sunset = weatherResult?.sys?.sunset;
   const windSpeedKM = ((weatherResult?.wind?.speed)*3.6).toFixed(2);
@@ -32,10 +36,18 @@ const WeatherCard = ({ weatherResult, aqi }) => {
     aqiVal = "N/A";
   }
 
+  const [isCelsius, setIsCelsius] = useState(true);
+    const cel = weatherResult?.main?.temp;
+  
+  const changeTempreture=()=>{
+    setIsCelsius((prev)=>!prev);
+  }
+  const displayTempData = isCelsius ? `${cel}°C`: `${(cel*(9/5))+32}°F`;
+
   return (
     <>
       <ul>
-        <li>Tempreture : {weatherResult?.main?.temp}°C</li>
+        <li>Tempreture : {displayTempData} <button className="BTN" onClick={changeTempreture}>toggle</button></li>
         <li>Weather condition : {weatherResult?.weather?.[0]?.description}</li>
         <li>Humidity : {weatherResult?.main?.humidity}%</li>
         <li>Wind speed : {windSpeedKM}km/h</li>
@@ -43,6 +55,17 @@ const WeatherCard = ({ weatherResult, aqi }) => {
         <li>Sunset : {sunsetDate}</li>
         <li>AQI : {aqiVal}</li>
       </ul>
+      <div>
+        <ul>
+        <li>Tempreture : {displayTempData} <button className="BTN" onClick={changeTempreture}>toggle</button></li>
+        <li>Weather condition : {weatherResult?.weather?.[0]?.description}</li>
+        <li>Humidity : {weatherResult?.main?.humidity}%</li>
+        <li>Wind speed : {windSpeedKM}km/h</li>
+        <li>Sunrise : {sunriseDate}</li>
+        <li>Sunset : {sunsetDate}</li>
+        <li>AQI : {aqiVal}</li>
+      </ul>
+      </div>
     </>
   );
 };
