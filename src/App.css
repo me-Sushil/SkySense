@@ -5,7 +5,7 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   background: url("./assets/pexels-brett-sayles-912364.jpg") no-repeat center center/cover;
-  background-color: rgba(0, 0, 0, 0.22);
+  /* background-color: rgba(0, 0, 0, 0.22); */
 }
 
 /* Search Bar */
@@ -25,79 +25,36 @@ input[type="text"]::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Weather Card Main Container */
+/* Right Side Recent Searches */
+.recent-searches {
+  background:rgba(0, 0, 0, 0.22);
+  padding: 15px;
+  border-radius: 15px;
+  min-width: 200px;
+}
+
+
+/* Main container */
 .weatherCard {
   max-width: 800px;
   margin: auto;
   padding: 20px;
   border-radius: 15px;
-  background: rgba(0, 20, 60, 0.6);
+  background: rgba(0, 0, 0, 0.28);
+
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  /* background: url("./assets/pexels-brett-sayles-912364.jpg") no-repeat center center/cover; */
-
+  gap: 20px; /* space between left & right */
+  align-items: flex-start; /* top aligned */
 }
 
-/* Left Weather Info */
-.weatherCard ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.weatherCard ul li {
-  margin: 10px 0;
-  font-size: 1.1rem;
-}
-
-/* Right Side Recent Searches */
-.recent-searches {
-  background: rgba(0, 20, 60, 0.6);
-  padding: 15px;
-  border-radius: 15px;
-  min-width: 200px;
-}
-.recent-searches h4 {
-  text-align: center;
-  margin-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-}
-.recent-searches ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-.recent-searches li {
-  padding: 5px 0;
-  cursor: pointer;
-}
-.recent-searches li:hover {
-  color: yellow;
-}
-
-/* AQI Colors */
-.aqi-good {
-  color: limegreen;
-}
-.aqi-moderate {
-  color: gold;
-}
-.aqi-unhealthy {
-  color: red;
-}
-
-/* Sunrise Sunset */
-.sun-info {
+/* LEFT column inside .weatherCard */
+ .weatherCard-left { 
+  flex: 1; /* take remaining space */
   display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
+  flex-direction: column; /* stack main data + bigData vertically */
+  gap: 20px; /* space between main data and bigData */
 }
-.sun-info span {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
+
 
 /* Wrapper for search input and results */
 .findCity {
@@ -106,14 +63,14 @@ input[type="text"]::placeholder {
   top: 20px; /* adjust based on your search bar height */
   right: 10%;
   width: 250px;
-  background: rgba(0, 0, 50, 0.7);
+ background:rgba(0, 0, 0, 0.22);  /* rgba(0, 0, 50, 0.7); */
   border-radius: 10px;
   padding: 10px;
   z-index: 10;
   color: white;
   max-height: 300px;
   overflow-y: auto;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+  /* box-shadow: 0px 4px 10px rgba(0,0,0,0.4); */
 }
 
 /* Scrollbar styling */
@@ -156,3 +113,25 @@ input[type="text"]::placeholder {
   font-weight: bold;
   color: aliceblue;
 }
+
+/* RIGHT column (.recentSearchCity) */
+.recentSearchCity {
+  flex: 0 0 250px; /* fixed width */
+  background:rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+}
+
+/* Big data container (below main weather info, still on left) */
+.bigData {
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+}
+
