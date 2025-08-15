@@ -11,7 +11,7 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
   // const recentSearchCity = JSON.parse(localStorage.getItem("city"));
   const items = Object.keys(localStorage).map((key) => {
     let data = JSON.parse(localStorage.getItem(key));
-    return { key, time: data.time, lat:data.lat, lon:data.lon };
+    return { key, time: data.time, lat: data.lat, lon: data.lon };
   });
 
   items.sort((a, b) => b.time - a.time);
@@ -51,13 +51,13 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
   const changeTempreture = () => {
     setIsCelsius((prev) => !prev);
   };
-  const displayTempData = isCelsius ? `${cel}°C` : `${cel * (9 / 5) + 32}°F`;
-
+  const displayTempData = isCelsius ? `${cel}°C` : `${ Math.floor(cel * (9 / 5) + 32)}°F`;
 
   const apiKey = import.meta.env.VITE_API_KEY;
 
-  const handleClick=(lat, lon)=>{ 
-    axios.get(
+  const handleClick = (lat, lon) => {
+    axios
+      .get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
       )
       .then((response) => {
@@ -75,6 +75,22 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
       });
     // setSearchQry("");
   };
+
+// for get time and date
+const now = new Date();
+const options = {
+  weekday: "long",  // Friday
+  year: "numeric",  // 2025
+  month: "short",   // Aug
+  day: "2-digit",   // 12
+  hour: "2-digit",  // 05
+  minute: "2-digit",
+  hour12: true
+};
+const formatted = new Intl.DateTimeFormat("en-US", options).format(now);
+// Example output: "Friday, Aug 12, 2025, 05:23"
+console.log(formatted);
+
   return (
     <>
       <div className="weatherCard">
@@ -94,16 +110,22 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
             <p> Wind speed : {windSpeedKM}km/h</p>
             <p> AQI : {aqiVal}</p>
           </div>
+
           <div className="bigData">
-            <p
+            <div
+              className="temp"
               style={{
                 fontSize: "66px",
                 margin: "10px 0",
               }}
             >
               {displayTempData}
-            </p>
-            {weatherResult.name}
+            </div>
+            <div className="middleInfo">
+              <div className="cityName">{weatherResult.name}</div>
+              <div className="dateAndTime">{formatted}</div>
+            </div>
+            <div className="weatherImage">Image here</div>
           </div>
         </div>
         <div className="recentSearchCity">
@@ -111,14 +133,22 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
             style={{
               fontSize: "19px",
               fontWeight: "bold",
-              marginTop:"3px"
+              marginTop: "3px",
             }}
           >
-            Last 5 searched Cities
+            Last 5 Searched Cities
           </p>
           {/* <p>{recentSearchCity}</p> */}
           {items.map((val) => {
-            return  <p key={val.key}  style={{cursor:"pointer"}} onClick={()=>handleClick(val.lat, val.lon)} >{val.key}</p>;
+            return (
+              <p
+                key={val.key}
+                style={{ cursor: "pointer" }}
+                onClick={() => handleClick(val.lat, val.lon)}
+              >
+                {val.key}
+              </p>
+            );
           })}
           <p
             style={{
