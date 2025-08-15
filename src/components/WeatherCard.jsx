@@ -3,6 +3,8 @@ import tempretureLogo from "../assets/high-temperature.png";
 import humidityLogo from "../assets/humidity.png"
 import windSpeedLogo from "../assets/storm.png";
 import aQIIndex from "../assets/air-quality.png";
+import sunRiseImg from "../assets/sunrise.png";
+import sunSetImg from "../assets/sunset.png";
 import "../App.css";
 import axios from "axios";
 import { useState } from "react";
@@ -135,7 +137,7 @@ console.log(formatted);
         <div className="recentSearchCity">
           <p
             style={{
-              fontSize: "19px",
+              fontSize: "16px",
               fontWeight: "bold",
               marginTop: "3px",
             }}
@@ -156,14 +158,14 @@ console.log(formatted);
           })}
           <p
             style={{
-              fontSize: "19px",
+              fontSize: "16px",
               fontWeight: "bold",
             }}
           >
-            Sun Times in {weatherResult.name}
+            SunTimes in {weatherResult.name}
           </p>
-          <p> Sunrise : {sunriseDate}</p>
-          <p> Sunset : {sunsetDate}</p>
+          <p> Sunrise :<img src={sunRiseImg} alt="sunRiseImg" className="sunRiseImg"/> {sunriseDate} </p>
+          <p> Sunset :<img src={sunSetImg} alt="sunSetImg" className="sunSetImg"/> {sunsetDate} </p>
         </div>
       </div>
     </>

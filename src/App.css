@@ -16,7 +16,7 @@ body {
 
 /* Search Bar */
 input[type="text"] {
-  width: 60%;
+  width: 45%;
   display: block;
   margin: 20px auto;
   padding: 12px 20px;
@@ -149,14 +149,6 @@ input[type="text"]::placeholder {
   box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
 }
 
-/* Big data container (below main weather info, still on left) */
-/* .bigData {
-  background: rgba(0, 0, 0, 0.22);
-  border-radius: 10px;
-  padding: 10px;
-  color: white;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.4); */
-/* } */
 
 .bigData {
   display: flex;
@@ -173,6 +165,7 @@ input[type="text"]::placeholder {
   font-size: 66px;
   font-weight: bold;
   margin-right: 1px;
+  
 }
 
 .middleInfo {
@@ -206,5 +199,17 @@ input[type="text"]::placeholder {
   width: 24px; /* adjust size */
   height: 24px;
   margin-bottom: -5px;
+  padding-left: 10px;
+}
+.sunRiseImg{
+  width: 27px; /* adjust size */
+  height: 27px;
+  margin-bottom: -5px;
+  padding-left: 10px;
+}
+.sunSetImg{
+  width: 23px; /* adjust size */
+  height: 20px;
+  margin-bottom: -1px;
   padding-left: 10px;
 }

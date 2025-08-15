@@ -127,7 +127,7 @@ const Search = () => {
                 </li>
               ))
             ) : (
-              <li>{searchQry} City Results Not Found</li>
+              <li>{searchQry} Not Found</li>
             )}
           </ul>
         </div>

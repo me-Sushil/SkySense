@@ -33,6 +33,8 @@
   align-items: center;
   justify-items: center;
   cursor: pointer;
+    margin-left: 11px;
+
 }
 .left-section {
   display: flex;
