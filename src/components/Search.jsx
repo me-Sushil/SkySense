@@ -1,4 +1,4 @@
-// import searchlogo from "../assets/Search.png";
+import searchlogo from "../assets/Search.png";
 import { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 import axios from "axios";
@@ -60,8 +60,8 @@ const Search = () => {
       JSON.stringify({
         name: `${city}`,
         time: Date.now(),
-        lat:lat,
-        lon:lon,
+        lat: lat,
+        lon: lon,
       })
     );
     setCity([]);
@@ -100,7 +100,6 @@ const Search = () => {
   return (
     <>
       <div>
-        {/* <img src={searchlogo} alt="searchlogo"/> */}
         <input
           type="text"
           placeholder="search city here"
@@ -108,10 +107,17 @@ const Search = () => {
           onChange={(event) => {
             setSearchQry(event.target.value);
           }}
+          style={{
+            backgroundImage: `url(${searchlogo})`,
+            backgroundSize:"25px",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "left 8px center",
+            paddingLeft: "60px",
+          }}
         ></input>
         <div className="findCity">
           <ul>
-          {city.length > 0 ? (
+            {city.length > 0 ? (
               city.map((city, index) => (
                 <li
                   key={index}
@@ -120,11 +126,9 @@ const Search = () => {
                   {city.name}, {city.country}
                 </li>
               ))
-            
-          ) : (
-             <li>{searchQry} City Results Not Found</li>
-             
-          )}
+            ) : (
+              <li>{searchQry} City Results Not Found</li>
+            )}
           </ul>
         </div>
       </div>
@@ -132,7 +136,12 @@ const Search = () => {
       <div>
         {" "}
         {/*className="weatherCard" */}
-        <WeatherCard aqi={aqiData} setAQIData={setAQIData} setWeatherResult={setWeatherResult} weatherResult={weatherResult} />
+        <WeatherCard
+          aqi={aqiData}
+          setAQIData={setAQIData}
+          setWeatherResult={setWeatherResult}
+          weatherResult={weatherResult}
+        />
       </div>
     </>
   );
