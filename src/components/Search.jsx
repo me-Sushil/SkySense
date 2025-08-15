@@ -110,21 +110,22 @@ const Search = () => {
           }}
         ></input>
         <div className="findCity">
+          <ul>
           {city.length > 0 ? (
-            <ul>
-              {city.map((city, index) => (
+              city.map((city, index) => (
                 <li
                   key={index}
                   onClick={() => handleCityClick(city.name, city.lat, city.lon)}
                 >
                   {city.name}, {city.country}
                 </li>
-              ))}
-            </ul>
+              ))
+            
           ) : (
-            console.log("no result found")
-            // <p>{searchQry} No results found</p>
+             <li>{searchQry} City Results Not Found</li>
+             
           )}
+          </ul>
         </div>
       </div>
 
