@@ -1,4 +1,8 @@
 // import { useState } from "react";
+import tempretureLogo from "../assets/high-temperature.png";
+import humidityLogo from "../assets/humidity.png"
+import windSpeedLogo from "../assets/storm.png";
+import aQIIndex from "../assets/air-quality.png";
 import "../App.css";
 import axios from "axios";
 import { useState } from "react";
@@ -99,16 +103,16 @@ console.log(formatted);
           <div className="mainWeatherInfo">
             <p>
               Tempreture : {displayTempData}
-              <button className="BTN" onClick={changeTempreture}>
+             <img src={tempretureLogo} alt="temprerurelogo" className="tempLogo"/> <button className="BTN" onClick={changeTempreture}>
                 toggle
               </button>
             </p>
             <p>
               Weather Condition : {weatherResult?.weather?.[0]?.description}
             </p>
-            <p> Humidity : {weatherResult?.main?.humidity}%</p>
-            <p> Wind speed : {windSpeedKM}km/h</p>
-            <p> AQI : {aqiVal}</p>
+            <p> Humidity : {weatherResult?.main?.humidity}% <img src={humidityLogo} alt="humidityLogo" className="humidityLogo"/></p>
+            <p> Wind speed : {windSpeedKM}km/h <img src={windSpeedLogo} alt="windSpeedLogo" className="windSpeedLogo" /></p>
+            <p> AQI : {aqiVal} <img src={aQIIndex} alt="aQIIndex" className="aQIIndex"/></p>
           </div>
 
           <div className="bigData">

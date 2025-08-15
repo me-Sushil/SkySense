@@ -112,7 +112,7 @@ const Search = () => {
             backgroundSize:"25px",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "left 8px center",
-            paddingLeft: "60px",
+            paddingLeft: "40px",
           }}
         ></input>
         <div className="findCity">

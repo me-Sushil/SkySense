@@ -198,3 +198,13 @@ input[type="text"]::placeholder {
   width: 80px; /* adjust size */
   height: 80px;
 }
+
+.tempLogo,
+.humidityLogo,
+.windSpeedLogo,
+.aQIIndex{
+  width: 24px; /* adjust size */
+  height: 24px;
+  margin-bottom: -5px;
+  padding-left: 10px;
+}
