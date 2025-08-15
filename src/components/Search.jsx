@@ -9,7 +9,8 @@ const Search = () => {
   const [aqiData, setAQIData] = useState([]);
   const [lat, setLat] = useState(27.7083)
   const [lon, setLon] = useState(85.3206)
-  const apiKey = "2e2c4ac74b20deb70c35de523b8e2367";
+  const apiKey = import.meta.env.VITE_API_KEY
+console.log(apiKey,"this is api key");
  
   useEffect(() => {
     if (!searchQry) {
