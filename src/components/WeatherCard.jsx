@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import tempretureLogo from "../assets/high-temperature.png";
-import humidityLogo from "../assets/humidity.png"
+import humidityLogo from "../assets/humidity.png";
 import windSpeedLogo from "../assets/storm.png";
 import aQIIndex from "../assets/air-quality.png";
 import sunRiseImg from "../assets/sunrise.png";
@@ -57,7 +57,9 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
   const changeTempreture = () => {
     setIsCelsius((prev) => !prev);
   };
-  const displayTempData = isCelsius ? `${cel}°C` : `${ Math.floor(cel * (9 / 5) + 32)}°F`;
+  const displayTempData = isCelsius
+    ? `${cel}°C`
+    : `${Math.floor(cel * (9 / 5) + 32)}°F`;
 
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -82,20 +84,20 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
     // setSearchQry("");
   };
 
-// for get time and date
-const now = new Date();
-const options = {
-  weekday: "long",  // Friday
-  year: "numeric",  // 2025
-  month: "short",   // Aug
-  day: "2-digit",   // 12
-  hour: "2-digit",  // 05
-  minute: "2-digit",
-  hour12: true
-};
-const formatted = new Intl.DateTimeFormat("en-US", options).format(now);
-// Example output: "Friday, Aug 12, 2025, 05:23"
-console.log(formatted);
+  // for get time and date
+  const now = new Date();
+  const options = {
+    weekday: "long", // Friday
+    year: "numeric", // 2025
+    month: "short", // Aug
+    day: "2-digit", // 12
+    hour: "2-digit", // 05
+    minute: "2-digit",
+    hour12: true,
+  };
+  const formatted = new Intl.DateTimeFormat("en-US", options).format(now);
+  // Example output: "Friday, Aug 12, 2025, 05:23"
+  console.log(formatted);
 
   return (
     <>
@@ -105,16 +107,45 @@ console.log(formatted);
           <div className="mainWeatherInfo">
             <p>
               Tempreture : {displayTempData}
-             <img src={tempretureLogo} alt="temprerurelogo" className="tempLogo"/> <button className="BTN" onClick={changeTempreture}>
+              <img
+                src={tempretureLogo}
+                alt="temprerurelogo"
+                className="tempLogo"
+              />{" "}
+              <button className="BTN" onClick={changeTempreture}>
                 toggle
               </button>
             </p>
             <p>
-              Weather Condition : {weatherResult?.weather?.[0]?.description}
+              Weather Condition : {weatherResult?.weather?.[0]?.description}{" "}
+              <img className="weatherConditionImg"
+                src={`https://openweathermap.org/img/wn/${weatherResult?.weather?.[0].icon}@2x.png`}
+                alt="Weather icon"
+              />
             </p>
-            <p> Humidity : {weatherResult?.main?.humidity}% <img src={humidityLogo} alt="humidityLogo" className="humidityLogo"/></p>
-            <p> Wind speed : {windSpeedKM}km/h <img src={windSpeedLogo} alt="windSpeedLogo" className="windSpeedLogo" /></p>
-            <p> AQI : {aqiVal} <img src={aQIIndex} alt="aQIIndex" className="aQIIndex"/></p>
+            <p>
+              {" "}
+              Humidity : {weatherResult?.main?.humidity}%{" "}
+              <img
+                src={humidityLogo}
+                alt="humidityLogo"
+                className="humidityLogo"
+              />
+            </p>
+            <p>
+              {" "}
+              Wind speed : {windSpeedKM}km/h{" "}
+              <img
+                src={windSpeedLogo}
+                alt="windSpeedLogo"
+                className="windSpeedLogo"
+              />
+            </p>
+            <p>
+              {" "}
+              AQI : {aqiVal}{" "}
+              <img src={aQIIndex} alt="aQIIndex" className="aQIIndex" />
+            </p>
           </div>
 
           <div className="bigData">
@@ -164,8 +195,22 @@ console.log(formatted);
           >
             SunTimes in {weatherResult.name}
           </p>
-          <p> Sunrise :<img src={sunRiseImg} alt="sunRiseImg" className="sunRiseImg"/> {sunriseDate} </p>
-          <p> Sunset :<img src={sunSetImg} alt="sunSetImg" className="sunSetImg"/> {sunsetDate} </p>
+          <p>
+            {" "}
+            Sunrise :
+            <img
+              src={sunRiseImg}
+              alt="sunRiseImg"
+              className="sunRiseImg"
+            />{" "}
+            {sunriseDate}{" "}
+          </p>
+          <p>
+            {" "}
+            Sunset :
+            <img src={sunSetImg} alt="sunSetImg" className="sunSetImg" />{" "}
+            {sunsetDate}{" "}
+          </p>
         </div>
       </div>
     </>
