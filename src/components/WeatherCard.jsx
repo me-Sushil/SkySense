@@ -1,9 +1,9 @@
 // import { useState } from "react";
 import "../App.css";
-
+import axios from "axios";
 import { useState } from "react";
 
-const WeatherCard = ({ weatherResult, aqi }) => {
+const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
   // if (!weatherResult) {
   //   return <p>Loading weather</p>;
   // }
@@ -11,17 +11,11 @@ const WeatherCard = ({ weatherResult, aqi }) => {
   // const recentSearchCity = JSON.parse(localStorage.getItem("city"));
   const items = Object.keys(localStorage).map((key) => {
     let data = JSON.parse(localStorage.getItem(key));
-    return { key, time: data.time };
+    return { key, time: data.time, lat:data.lat, lon:data.lon };
   });
 
   items.sort((a, b) => b.time - a.time);
   items.slice(5).forEach((item) => localStorage.removeItem(item.key));
-  //  console.log(items.key.name, "this is recent search data");
-
-  const fiveItems = Object.keys(localStorage).map((key) => {
-    let data = JSON.parse(localStorage.getItem(key));
-    return { key, time: data.time };
-  });
 
   const sunrise = weatherResult?.sys?.sunrise;
   const sunset = weatherResult?.sys?.sunset;
@@ -59,6 +53,28 @@ const WeatherCard = ({ weatherResult, aqi }) => {
   };
   const displayTempData = isCelsius ? `${cel}°C` : `${cel * (9 / 5) + 32}°F`;
 
+
+  const apiKey = import.meta.env.VITE_API_KEY;
+
+  const handleClick=(lat, lon)=>{ 
+    axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
+      )
+      .then((response) => {
+        setWeatherResult(response.data);
+        console.log(response.data);
+      });
+
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`
+      )
+      .then((response) => {
+        setAQIData(response.data);
+        console.log("world data AQI api including nepal", response.data);
+      });
+    // setSearchQry("");
+  };
   return (
     <>
       <div className="weatherCard">
@@ -72,7 +88,7 @@ const WeatherCard = ({ weatherResult, aqi }) => {
               </button>
             </p>
             <p>
-              Weather condition : {weatherResult?.weather?.[0]?.description}
+              Weather Condition : {weatherResult?.weather?.[0]?.description}
             </p>
             <p> Humidity : {weatherResult?.main?.humidity}%</p>
             <p> Wind speed : {windSpeedKM}km/h</p>
@@ -101,8 +117,8 @@ const WeatherCard = ({ weatherResult, aqi }) => {
             Last 5 searched Cities
           </p>
           {/* <p>{recentSearchCity}</p> */}
-          {fiveItems.map((val) => {
-            return <p key={val.key} >{val.key}</p>;
+          {items.map((val) => {
+            return  <p key={val.key}  style={{cursor:"pointer"}} onClick={()=>handleClick(val.lat, val.lon)} >{val.key}</p>;
           })}
           <p
             style={{

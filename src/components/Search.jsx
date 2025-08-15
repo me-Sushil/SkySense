@@ -7,11 +7,11 @@ const Search = () => {
   const [weatherResult, setWeatherResult] = useState([]);
   const [city, setCity] = useState([]);
   const [aqiData, setAQIData] = useState([]);
-  const [lat, setLat] = useState(27.7083)
-  const [lon, setLon] = useState(85.3206)
-  const apiKey = import.meta.env.VITE_API_KEY
-console.log(apiKey,"this is api key");
- 
+  const [lat, setLat] = useState(27.7083);
+  const [lon, setLon] = useState(85.3206);
+  const apiKey = import.meta.env.VITE_API_KEY;
+  console.log(apiKey, "this is api key");
+
   useEffect(() => {
     if (!searchQry) {
       setCity([]);
@@ -34,8 +34,8 @@ console.log(apiKey,"this is api key");
     return () => clearTimeout(delaySearchQry);
   }, [searchQry]);
 
-  useEffect(()=>{
-axios
+  useEffect(() => {
+    axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
       )
@@ -52,14 +52,18 @@ axios
         setAQIData(response.data);
         console.log("world data AQI api including nepal", response.data);
       });
-},[]);
-
+  }, []);
 
   const handleCityClick = (city, lat, lon) => {
-    localStorage.setItem(`${city}`, JSON.stringify({
-  name: `${city}`,
-  time: Date.now()
-}));
+    localStorage.setItem(
+      `${city}`,
+      JSON.stringify({
+        name: `${city}`,
+        time: Date.now(),
+        lat:lat,
+        lon:lon,
+      })
+    );
     setCity([]);
     axios
       .get(
@@ -90,10 +94,8 @@ axios
         setAQIData(response.data);
         console.log("world data AQI api including nepal", response.data);
       });
-      setSearchQry("");
+    setSearchQry("");
   };
-
-
 
   return (
     <>
@@ -108,27 +110,29 @@ axios
           }}
         ></input>
         <div className="findCity">
-        {city.length > 0 ? (
-          <ul>
-            {city.map((city, index) => (
-              <li 
-                key={index}
-                onClick={() => handleCityClick(city.name, city.lat, city.lon)}
-              >
-                {city.name}, {city.country}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          console.log("no result found")
-          // <p>{searchQry} No results found</p>
-        )}
+          {city.length > 0 ? (
+            <ul>
+              {city.map((city, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleCityClick(city.name, city.lat, city.lon)}
+                >
+                  {city.name}, {city.country}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            console.log("no result found")
+            // <p>{searchQry} No results found</p>
+          )}
+        </div>
       </div>
+
+      <div>
+        {" "}
+        {/*className="weatherCard" */}
+        <WeatherCard aqi={aqiData} setAQIData={setAQIData} setWeatherResult={setWeatherResult} weatherResult={weatherResult} />
       </div>
-      
-       <div > {/*className="weatherCard" */}
-      <WeatherCard aqi={aqiData} weatherResult={weatherResult} />
-    </div>
     </>
   );
 };
