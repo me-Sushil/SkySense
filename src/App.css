@@ -1,18 +1,22 @@
 :root {
-  --header-background-color: black;
-  --background-color: rgba(0, 0, 0, 0.22);/* Example background color */
-  --mainWeatherInfo-color: white; /* Example text color */
+  --header-background-color: #00000096;
+  --background-color: rgba(0, 0, 0, 0.22);
+  --mainWeatherInfo-color: white; 
   --input-feild-background-color: rgba(255, 255, 255, 0.3);
   --input-feild-text-color: white;
   --input-placeholder-color:rgba(255, 255, 255, 0.7);
   --weatherCardHeader-background-color: rgba(0, 20, 60, 0.8);
   --findCity-liHover-background-color:rgba(255, 255, 255, 0.2);
-  --btn-color: aliceblue;
+  --toggle-btn-color: rgb(255, 255, 255);
   --box-sadow:rgba(0,0,0,0.4);
 }   
 
-
-
+ [data-theme="dark"] {
+  --header-background-color: black;
+  --background-color: rgba(0, 0, 0, 0.69);
+  --mainWeatherInfo-color: white;
+  --input-feild-background-color: rgba(0, 0, 0, 0.59);
+} 
 
 
 /* General App Background */
@@ -45,6 +49,8 @@
     color: blue;
     font-family: "Jacquard 24", cursive;
 }
+
+
 .mood{
   display: flex;
   align-items: center;
@@ -54,13 +60,14 @@
   width: 95px;
   background-color: #444444;
   border-radius: 55px;
+  border-width: 0cap;
 }
 .darkmood, .lightmood {
   height: 24px;
   align-items: center;
   justify-items: center;
   cursor: pointer;
-    margin-left: 11px;
+    margin-left:8px;
 
 }
 .left-section {
@@ -193,7 +200,7 @@ input[type="text"]::placeholder {
   height: 26px;
   width: 60px;
   font-weight: bold;
-  color: var(--btn-color);
+  color: var(--toggle-btn-color);
 }
 
 /* RIGHT column (.recentSearchCity) */
