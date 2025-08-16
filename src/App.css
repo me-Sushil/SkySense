@@ -5,12 +5,12 @@
 
 
 /* General App Background */
-body {
+ body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background: url("./assets/pexels-brett-sayles-912364.jpg") no-repeat center center/cover;
-  /* background-color: rgba(0, 0, 0, 0.22); */
+  font-family: Arial, sans-serif; 
+   background: url("./assets/pexels-brett-sayles-912364.jpg") no-repeat center center/cover; 
+  background-color: rgba(0, 0, 0, 0.22);
 }
 
 
