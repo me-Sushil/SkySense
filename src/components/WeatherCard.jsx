@@ -177,7 +177,7 @@ const targetTime = new Date(nowUTC.getTime() + offsetSeconds * 1000);
               <div className="dateAndTime">{formatTime(targetTime)}</div>
             </div>
             <div className="weatherImage"><img style={{
-                height: "150px",
+                height: "120px",
                 width: "95px",
               }} className="weatherConditionImgBig"
                 src={`https://openweathermap.org/img/wn/${weatherResult?.weather?.[0].icon}@2x.png`}
