@@ -1,7 +1,7 @@
 import logo from "../assets/logo.png";
-import dark from "../assets/MoonDarkMood.png";
-import light from "../assets/SunLightMood.png";
 import "@fontsource/jacquard-24"; // Defaults to weight 400
+import "../App.css";
+import DarkMode from "./DarkMode";
 const Header = () => {
   return (
     <>
@@ -10,10 +10,8 @@ const Header = () => {
           <img src={logo} alt="App logo" className="logo" />
           <h1 className="projectName">SkySense</h1>
         </div>
-        <div className="mood">
-          <img src={dark} alt="dark" className="darkmood" />
-          <img src={light} alt="light" className="lightmood" />
-        </div>
+        <DarkMode />
+        
       </div>
     </>
   );
