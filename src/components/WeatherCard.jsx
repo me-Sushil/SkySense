@@ -195,7 +195,6 @@ const targetTime = new Date(nowUTC.getTime() + offsetSeconds * 1000);
           >
             Last 5 Searched Cities
           </p>
-          {/* <p>{recentSearchCity}</p> */}
           {items.map((val) => {
             return (
               <p
