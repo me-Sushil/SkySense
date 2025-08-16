@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import tempretureLogo from "../assets/high-temperature.png";
 import humidityLogo from "../assets/humidity.png";
 import windSpeedLogo from "../assets/storm.png";
@@ -14,7 +13,6 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
   //   return <p>Loading weather</p>;
   // }
   console.log(weatherResult.name, "test for city");
-  // const recentSearchCity = JSON.parse(localStorage.getItem("city"));
   const items = Object.keys(localStorage).map((key) => {
     let data = JSON.parse(localStorage.getItem(key));
     return { key, time: data.time, lat: data.lat, lon: data.lon };
@@ -93,7 +91,6 @@ const sunsetDate = sunset
         setAQIData(response.data);
         console.log("world data AQI api including nepal", response.data);
       });
-    // setSearchQry("");
   };
 
   // Format as "HH:MM - Day, DD Month YYYY"
