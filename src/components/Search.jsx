@@ -135,7 +135,6 @@ const Search = () => {
 
       <div>
         {" "}
-        {/*className="weatherCard" */}
         <WeatherCard
           aqi={aqiData}
           setAQIData={setAQIData}

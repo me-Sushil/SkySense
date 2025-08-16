@@ -32,7 +32,7 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
       hour: "2-digit",
       minute: "2-digit",
       hour12: true,
-      timeZone: "UTC", // important
+      timeZone: "UTC", 
     })
   : "N/A";
 
@@ -41,7 +41,7 @@ const sunsetDate = sunset
       hour: "2-digit",
       minute: "2-digit",
       hour12: true,
-      timeZone: "UTC", // important
+      timeZone: "UTC", 
     })
   : "N/A";
 
@@ -93,7 +93,6 @@ const sunsetDate = sunset
       });
   };
 
-  // Format as "HH:MM - Day, DD Month YYYY"
 function formatTime(date) {
   const options = {
     hour: "2-digit",
@@ -108,7 +107,6 @@ function formatTime(date) {
 
 // Get current UTC time
 const nowUTC = new Date(Date.now() + new Date().getTimezoneOffset() * 60000);
-
 // Apply the offset
 const targetTime = new Date(nowUTC.getTime() + offsetSeconds * 1000);
 
