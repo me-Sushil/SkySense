@@ -30,18 +30,22 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
     const offsetSeconds = weatherResult?.timezone || 0; // Offset in seconds from UTC
 
   const sunriseDate = sunrise
-    ? new Date(sunrise * 1000).toLocaleString("en-US", {
+  ? new Date((sunrise + offsetSeconds) * 1000).toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
+      hour12: true,
+      timeZone: "UTC", // important
     })
-    : "N/A";
+  : "N/A";
 
-  const sunsetDate = sunset
-    ? new Date(sunset * 1000).toLocaleString("en-US", {
+const sunsetDate = sunset
+  ? new Date((sunset + offsetSeconds) * 1000).toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
+      hour12: true,
+      timeZone: "UTC", // important
     })
-    : "N/A";
+  : "N/A";
 
   let aqiVal = "";
   const aQI = aqi?.list?.[0]?.main?.aqi;
@@ -101,12 +105,10 @@ function formatTime(date) {
     year: "numeric",
     month: "short",
     day: "2-digit",
+     timeZone: "UTC",
   };
   return date.toLocaleString("en-US", options);
 }
-
-
-//  const offsetSeconds = weatherResult?.timezone || 0; // Offset in seconds from UTC
 
 // Get current UTC time
 const nowUTC = new Date(Date.now() + new Date().getTimezoneOffset() * 60000);
