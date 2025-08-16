@@ -2,7 +2,6 @@ import logo from "../assets/logo.png";
 import dark from "../assets/MoonDarkMood.png";
 import light from "../assets/SunLightMood.png";
 import "@fontsource/jacquard-24"; // Defaults to weight 400
-// import "../style/header.css";
 const Header = () => {
   return (
     <>
