@@ -105,7 +105,6 @@ function formatTime(date) {
     year: "numeric",
     month: "short",
     day: "2-digit",
-     timeZone: "UTC",
   };
   return date.toLocaleString("en-US", options);
 }
