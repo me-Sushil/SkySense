@@ -27,12 +27,20 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
   const sunset = weatherResult?.sys?.sunset;
   const windSpeedKM = (weatherResult?.wind?.speed * 3.6).toFixed(2);
 
+    const offsetSeconds = weatherResult?.timezone || 0; // Offset in seconds from UTC
+
   const sunriseDate = sunrise
-    ? new Date(sunrise * 1000).toLocaleTimeString()
+    ? new Date(sunrise * 1000).toLocaleString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
     : "N/A";
 
   const sunsetDate = sunset
-    ? new Date(sunset * 1000).toLocaleTimeString()
+    ? new Date(sunset * 1000).toLocaleString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
     : "N/A";
 
   let aqiVal = "";
@@ -84,20 +92,28 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
     // setSearchQry("");
   };
 
-  // for get time and date
-  const now = new Date();
+  // Format as "HH:MM - Day, DD Month YYYY"
+function formatTime(date) {
   const options = {
-    weekday: "long", // Friday
-    year: "numeric", // 2025
-    month: "short", // Aug
-    day: "2-digit", // 12
-    hour: "2-digit", // 05
+    hour: "2-digit",
     minute: "2-digit",
-    hour12: true,
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
   };
-  const formatted = new Intl.DateTimeFormat("en-US", options).format(now);
-  // Example output: "Friday, Aug 12, 2025, 05:23"
-  console.log(formatted);
+  return date.toLocaleString("en-US", options);
+}
+
+
+//  const offsetSeconds = weatherResult?.timezone || 0; // Offset in seconds from UTC
+
+// Get current UTC time
+const nowUTC = new Date(Date.now() + new Date().getTimezoneOffset() * 60000);
+
+// Apply the offset
+const targetTime = new Date(nowUTC.getTime() + offsetSeconds * 1000);
+
 
   return (
     <>
@@ -160,7 +176,7 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
             </div>
             <div className="middleInfo">
               <div className="cityName">{weatherResult.name}</div>
-              <div className="dateAndTime">{formatted}</div>
+              <div className="dateAndTime">{formatTime(targetTime)}</div>
             </div>
             <div className="weatherImage"><img className="weatherConditionImgBig"
                 src={`https://openweathermap.org/img/wn/${weatherResult?.weather?.[0].icon}@2x.png`}
