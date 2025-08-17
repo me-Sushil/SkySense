@@ -62,7 +62,7 @@
   gap: 10px;
   height: 42px;
   width: 59px;
-  background-color: #444444;
+  background-color: #00000078;
   border-radius: 55px;
   border-width: 0cap;
 }
@@ -91,6 +91,7 @@ input[type="text"] {
   width: 45%;
   display: block;
    margin: 20px auto; 
+   margin-left: 120px;
   padding: 12px 20px; 
   font-size: 1rem;
   border: none;
@@ -112,18 +113,51 @@ input[type="text"]::placeholder {
 
 }
 
-/* Main container */
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px; /* Space between weather card and news card */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Main container
+/* Weather Card - Remove absolute positioning and adjust */
 .weatherCard {
   max-width: 800px;
   position: relative;
-  margin:auto;/* auto */
   padding: 20px;
   border-radius: 15px;
   background: var(--background-color);
   display: flex;
-  gap: 20px; /* space between left & right */
-  align-items: flex-start; /* top aligned */
+  gap: 20px;
+  align-items: flex-start;
+  flex-shrink: 0; /* Prevent shrinking */
 }
+
+.NewsCard {
+  width: 300px;
+  height: 400px;
+  padding: 20px;
+  border-radius: 15px;
+  background: var(--background-color);
+  display: flex;
+  flex-direction: column; /* Changed back to column for proper content stacking */
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 16px;
+  color: var(--mainWeatherInfo-color);
+  box-shadow: 0px 4px 10px var(--box-sadow);
+  flex-shrink: 0; /* Prevent shrinking */
+}
+/* News Card - Fixed positioning */
+
+
+
 /* Top weather header card (aligned with weatherCard width) */
 .weatherCardHeader {
   max-width: 840px;              /* same as weatherCard */
@@ -212,7 +246,7 @@ input[type="text"]::placeholder {
   margin-top: 30px;
   padding: 10px;
   color: var(--mainWeatherInfo-color);
-  max-height: 320px;
+  max-height: 500px;
   box-shadow: 0px 4px 10px var(--box-sadow); 
 }
 
