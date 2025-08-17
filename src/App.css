@@ -18,6 +18,10 @@
   --input-feild-background-color: rgba(0, 0, 0, 0.59);
 } 
 
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
 
 /* General App Background */
  body {
@@ -86,8 +90,8 @@
 input[type="text"] {
   width: 45%;
   display: block;
-  margin: 20px auto;
-  padding: 12px 20px;
+   margin: 20px auto; 
+  padding: 12px 20px; 
   font-size: 1rem;
   border: none;
   outline: none;
@@ -105,6 +109,7 @@ input[type="text"]::placeholder {
   padding: 15px;
   border-radius: 15px;
   min-width: 200px;
+
 }
 
 /* Main container */
