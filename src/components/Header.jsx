@@ -3,6 +3,9 @@ import "@fontsource/jacquard-24"; // Defaults to weight 400
 import "../App.css";
 import DarkMode from "./DarkMode";
 const Header = () => {
+
+  
+
   return (
     <>
       <div className="header">
