@@ -1,5 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 import { useEffect, useState } from "react";
+import Model from "./Model";
 const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
 const ai = new GoogleGenAI({ apiKey });
 
@@ -49,7 +50,7 @@ VALIDATION
       setIsLoading(false);
     }
   };
-  
+
   useEffect(() => {
     if (city) {
       fetchNews();
@@ -91,7 +92,7 @@ VALIDATION
               <li key={index} onClick={() => handleNewsClick(Inews)}>
                 {Inews.headline} ...Read More
               </li>
-            ); //.headline, Inews.news, Inews.publisher
+            );
           })}
         </ul>
       </div>
