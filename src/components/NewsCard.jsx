@@ -1,12 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
 const ai = new GoogleGenAI({apiKey});
 
 
 const NewsCard = ({ city }) => {
 
-
+const [news, setNews]= useState([]);
   async function main() {
     const prompt = `
 You are a news researcher. Search over the internet, news portals, and articles to find the most recent top 5 news from ${city}.
@@ -43,8 +43,7 @@ VALIDATION
       console.log(response.text);
       // const data = await response.json();
 
-      const data = JSON.parse(cleanedResponse);
-      console.log("data all", data);
+      setNews(JSON.parse(cleanedResponse));
   }
 useEffect(()=>{
  main();
@@ -67,6 +66,10 @@ useEffect(()=>{
         }}
       >
         Top 5 Recent News from {city}
+
+        <ul>
+            {news.map()}
+        </ul>
       </div>
     </>
   );
