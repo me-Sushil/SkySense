@@ -15,10 +15,9 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
   const items = Object.keys(localStorage)
     .filter((key) => key !== "theme")
     .map((key) => {
-      
-  let data = JSON.parse(localStorage.getItem(key));
-  return { key, time: data.time, lat: data.lat, lon: data.lon };
-  });
+      let data = JSON.parse(localStorage.getItem(key));
+      return { key, time: data.time, lat: data.lat, lon: data.lon };
+    });
 
   items.sort((a, b) => b.time - a.time);
   items.slice(5).forEach((item) => localStorage.removeItem(item.key));
@@ -195,6 +194,10 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
               fontSize: "16px",
               fontWeight: "bold",
               marginTop: "3px",
+               paddingBottom: "3px",
+              borderBottom: "2px solid black",
+              display: "inline-block",
+              marginBottom:"-9px",
             }}
           >
             Last 5 Searched Cities
@@ -212,6 +215,10 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
           })}
           <p
             style={{
+              paddingBottom: "3px",
+              borderBottom: "2px solid black",
+              display: "inline-block",
+              marginBottom:"-9px",
               fontSize: "16px",
               fontWeight: "bold",
             }}
@@ -220,11 +227,7 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
           </p>
           <p>
             Sunrise :
-            <img
-              src={sunRiseImg}
-              alt="sunRiseImg"
-              className="sunRiseImg"
-            />
+            <img src={sunRiseImg} alt="sunRiseImg" className="sunRiseImg" />
             {sunriseDate}
           </p>
           <p>
