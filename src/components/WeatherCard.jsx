@@ -219,20 +219,18 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
             SunTimes in {weatherResult.name}
           </p>
           <p>
-            {" "}
             Sunrise :
             <img
               src={sunRiseImg}
               alt="sunRiseImg"
               className="sunRiseImg"
-            />{" "}
-            {sunriseDate}{" "}
+            />
+            {sunriseDate}
           </p>
           <p>
-            {" "}
             Sunset :
             <img src={sunSetImg} alt="sunSetImg" className="sunSetImg" />{" "}
-            {sunsetDate}{" "}
+            {sunsetDate}
           </p>
         </div>
       </div>
