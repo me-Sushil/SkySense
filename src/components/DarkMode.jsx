@@ -7,7 +7,7 @@ const DarkMode = () => {
 
   useEffect(() => {
     const savedMode = JSON.parse(localStorage.getItem("theme"));
-    if (savedMode === "dark") {
+    if (savedMode.mode === "dark") {
       setIsDarkMode(true);
       document.documentElement.setAttribute("data-theme", "dark");
     } else {
@@ -22,10 +22,10 @@ const DarkMode = () => {
 
     if (newTheme) {
       document.documentElement.setAttribute("data-theme", "dark");
-      localStorage.setItem("theme", JSON.stringify("dark"));
+      localStorage.setItem("theme", JSON.stringify({ mode: "dark" }));
     } else {
       document.documentElement.setAttribute("data-theme", "light");
-      localStorage.setItem("theme", JSON.stringify("light"));
+      localStorage.setItem("theme", JSON.stringify({ mode: "light" }));
     }
   };
 
@@ -33,18 +33,21 @@ const DarkMode = () => {
     <>
       <div>
         <button className="mood" onClick={handleButtonClick}>
-          <img
-            src={dark}
-            className="darkmood"
-            alt="Dark mode"
-            style={{ opacity: isDarkMode ? 1 : 0.5 }}
-          />
-          <img
-            src={light}
-            className="lightmood"
-            alt="Light mode"
-            style={{ opacity: isDarkMode ? 0.5 : 1 }}
-          />
+          {isDarkMode ? (
+            <img
+              src={dark}
+              className="darkmood"
+              alt="Dark mode"
+              style={{ opacity: isDarkMode ? 1 : 0.5 }}
+            />
+          ) : (
+            <img
+              src={light}
+              className="lightmood"
+              alt="Light mode"
+              style={{ opacity: isDarkMode ? 0.5 : 1 }}
+            />
+          )}
         </button>
       </div>
     </>

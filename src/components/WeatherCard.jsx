@@ -12,10 +12,12 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
   // if (!weatherResult) {
   //   return <p>Loading weather</p>;
   // }
-  console.log(weatherResult.name, "test for city");
-  const items = Object.keys(localStorage).map((key) => {
-    let data = JSON.parse(localStorage.getItem(key));
-    return { key, time: data.time, lat: data.lat, lon: data.lon };
+  const items = Object.keys(localStorage)
+    .filter((key) => key !== "theme")
+    .map((key) => {
+      
+  let data = JSON.parse(localStorage.getItem(key));
+  return { key, time: data.time, lat: data.lat, lon: data.lon };
   });
 
   items.sort((a, b) => b.time - a.time);
@@ -25,25 +27,25 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
   const sunset = weatherResult?.sys?.sunset;
   const windSpeedKM = (weatherResult?.wind?.speed * 3.6).toFixed(2);
 
-    const offsetSeconds = weatherResult?.timezone || 0; // Offset in seconds from UTC
+  const offsetSeconds = weatherResult?.timezone || 0; // Offset in seconds from UTC
 
   const sunriseDate = sunrise
-  ? new Date((sunrise + offsetSeconds) * 1000).toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-      timeZone: "UTC", 
-    })
-  : "N/A";
+    ? new Date((sunrise + offsetSeconds) * 1000).toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: "UTC",
+      })
+    : "N/A";
 
-const sunsetDate = sunset
-  ? new Date((sunset + offsetSeconds) * 1000).toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-      timeZone: "UTC", 
-    })
-  : "N/A";
+  const sunsetDate = sunset
+    ? new Date((sunset + offsetSeconds) * 1000).toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: "UTC",
+      })
+    : "N/A";
 
   let aqiVal = "";
   const aQI = aqi?.list?.[0]?.main?.aqi;
@@ -93,23 +95,22 @@ const sunsetDate = sunset
       });
   };
 
-function formatTime(date) {
-  const options = {
-    hour: "2-digit",
-    minute: "2-digit",
-    weekday: "long",
-    year: "numeric",
-    month: "short",
-    day: "2-digit",
-  };
-  return date.toLocaleString("en-US", options);
-}
+  function formatTime(date) {
+    const options = {
+      hour: "2-digit",
+      minute: "2-digit",
+      weekday: "long",
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+    };
+    return date.toLocaleString("en-US", options);
+  }
 
-// Get current UTC time
-const nowUTC = new Date(Date.now() + new Date().getTimezoneOffset() * 60000);
-// Apply the offset
-const targetTime = new Date(nowUTC.getTime() + offsetSeconds * 1000);
-
+  // Get current UTC time
+  const nowUTC = new Date(Date.now() + new Date().getTimezoneOffset() * 60000);
+  // Apply the offset
+  const targetTime = new Date(nowUTC.getTime() + offsetSeconds * 1000);
 
   return (
     <>
@@ -130,7 +131,8 @@ const targetTime = new Date(nowUTC.getTime() + offsetSeconds * 1000);
             </p>
             <p>
               Weather Condition : {weatherResult?.weather?.[0]?.description}{" "}
-              <img className="weatherConditionImg"
+              <img
+                className="weatherConditionImg"
                 src={`https://openweathermap.org/img/wn/${weatherResult?.weather?.[0].icon}@2x.png`}
                 alt="Weather icon"
               />
@@ -174,13 +176,17 @@ const targetTime = new Date(nowUTC.getTime() + offsetSeconds * 1000);
               <div className="cityName">{weatherResult.name}</div>
               <div className="dateAndTime">{formatTime(targetTime)}</div>
             </div>
-            <div className="weatherImage"><img style={{
-                height: "120px",
-                width: "95px",
-              }} className="weatherConditionImgBig"
+            <div className="weatherImage">
+              <img
+                style={{
+                  height: "120px",
+                  width: "95px",
+                }}
+                className="weatherConditionImgBig"
                 src={`https://openweathermap.org/img/wn/${weatherResult?.weather?.[0].icon}@2x.png`}
                 alt="Weather icon"
-              /></div>
+              />
+            </div>
           </div>
         </div>
         <div className="recentSearchCity">
