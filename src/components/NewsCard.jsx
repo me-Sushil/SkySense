@@ -3,11 +3,14 @@ import { useEffect, useState } from "react";
 const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
 const ai = new GoogleGenAI({ apiKey });
 
-const NewsCard = ({city}) => {
+const NewsCard = ({ city }) => {
   const [news, setNews] = useState([]);
+  const [selectedNews, setSelectedNews] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-
-  async function main() {
+  const fetchNews = async () => {
+    setIsLoading(true);
     console.log(city, " city inside async fn");
     const prompt = `
 You are a news researcher. Search over the internet, news portals, and articles to find the most recent top 5 news only from ${city} or its country.
@@ -16,7 +19,7 @@ Output format:
 - An array of exactly 5 objects.
 - Each object MUST match this schema:
   {
-    "headline": "<max 5 words>",
+    "headline": "<max 15 words>",
     "news": "<exactly 100 words news from ${city}, concise summary with who/what/when/where/why/how; include key numbers, names, and outcomes; no opinions>",
     "publisher": "<news outlet name>",
   }
@@ -28,25 +31,45 @@ VALIDATION
 - No paywalled teaser pages if a canonical article is available.
 - Deduplicate: if multiple outlets cover the same event, pick the most complete/source-most article.
 - If fewer than 5 truly recent items exist, include older items but add "(older)" at the end of the headline news from ${city}.`;
+    try {
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: prompt,
+      });
+      let cleanedResponse = response.text
+        .replace(/```json\n?/g, "") // Remove ```json
+        .replace(/```\n?/g, "") // Remove ```
+        .trim(); // Remove extra whitespace
+      console.log(response.text);
 
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: prompt,
-    });
-    let cleanedResponse = response.text
-      .replace(/```json\n?/g, "") // Remove ```json
-      .replace(/```\n?/g, "") // Remove ```
-      .trim(); // Remove extra whitespace
-    console.log(response.text);
-    // const data = await response.json();
-
-    setNews(JSON.parse(cleanedResponse));
-  }
+      setNews(JSON.parse(cleanedResponse));
+    } catch (error) {
+      console.error("Error fetching news:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
   useEffect(() => {
-    main();
+    if (city) {
+      fetchNews();
+    }
   }, [city]);
 
   console.log(city, "city for news");
+
+  const handleNewsClick = (Inews) => {
+    setSelectedNews(Inews);
+    setIsModalVisible(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+    setSelectedNews(null);
+  };
+
+  if (isLoading) {
+    return <div>Loading news...</div>;
+  }
   return (
     <>
       <div
@@ -64,10 +87,17 @@ VALIDATION
       <div className="news">
         <ul>
           {news.map((Inews, index) => {
-            return <li key={index}>{Inews.headline} ...Read More</li>;
+            return (
+              <li key={index} onClick={() => handleNewsClick(Inews)}>
+                {Inews.headline} ...Read More
+              </li>
+            ); //.headline, Inews.news, Inews.publisher
           })}
         </ul>
       </div>
+      {isModalVisible && selectedNews && (
+        <Model news={selectedNews} onClose={handleCloseModal} />
+      )}
     </>
   );
 };
