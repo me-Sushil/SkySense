@@ -340,3 +340,109 @@ input[type="text"]::placeholder {
 .news li:hover {
   background: var(--findCity-liHover-background-color); /* rgba(255, 255, 255, 0.2); */
 }
+ 
+
+/* css for model */
+
+/* src/components/Modal.css */
+.modal-overlay {
+  position: fixed;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+   margin-top: 0cap;
+  margin-bottom: 0cap;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 18px;
+  z-index: 1000;
+}
+
+.modal-close {
+  position: absolute;
+  top: 23px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #ffffff;
+  width: 90px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 55px;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background-color: #f0f0f0;
+  color: #b74040;
+}
+
+.modal-header {
+  padding: 20px 50px 15px 20px; /* Extra right padding to avoid close button */
+  border-bottom: 1px solid #eee;
+  background-color: #f9f9f9;
+  border-radius: 8px 8px 0 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+.modal-body {
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.modal-body p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.modal-footer {
+  padding: 15px 20px;
+  background-color: #000000;
+  border-radius: 0 0 8px 8px;
+}
+
+.modal-footer p {
+  margin: 0;
+  color: #f9f9f9;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    max-height: 90vh;
+  }
+  
+  .modal-header {
+    padding: 15px 45px 10px 15px;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .modal-body {
+    padding: 15px;
+  }
+  
+  .modal-footer {
+    padding: 10px 15px;
+  }
+}
