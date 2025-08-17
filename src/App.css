@@ -188,12 +188,6 @@ input[type="text"]::placeholder {
   background: var(--findCity-liHover-background-color); /* rgba(255, 255, 255, 0.2); */
 }
 
-/* "No results found" text */
-.findCity p {
-  margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
 
 .BTN{
   background-color: var(--background-color);
