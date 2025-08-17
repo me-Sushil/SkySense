@@ -115,6 +115,7 @@ input[type="text"]::placeholder {
 /* Main container */
 .weatherCard {
   max-width: 800px;
+  position: relative;
   margin:auto;/* auto */
   padding: 20px;
   border-radius: 15px;
@@ -138,8 +139,9 @@ input[type="text"]::placeholder {
   align-items: center;            /* vertically center text */
   justify-content: center;        /* horizontally center text */
   font-size: 33px;                /* adjust as needed */
-  position: fixed;               /* stay on top*/
+  /*position: fixed;               stay on top*/
   /* top: 0; */
+  position: absolute;
   left: 50%;                       /* start at center */
   transform: translateX(-50%);    /* center horizontally */
   /*z-index: 1000;                   above everything else */
