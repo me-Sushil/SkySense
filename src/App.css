@@ -9,6 +9,11 @@
   --findCity-liHover-background-color:rgba(255, 255, 255, 0.2);
   --toggle-btn-color: rgb(255, 255, 255);
   --box-sadow:rgba(0,0,0,0.4);
+   --modal-overlay-background-color: rgba(225, 225, 225, 1);
+   --modal-header-background-color: #000000;
+   --modal-header-h2-color: #ffffff;
+   --modal-body-p-color:#000000;
+   --model-close-background-color:#000000;
 }   
 
  [data-theme="dark"] {
@@ -16,6 +21,11 @@
   --background-color: rgba(0, 0, 0, 0.69);
   --mainWeatherInfo-color: white;
   --input-feild-background-color: rgba(0, 0, 0, 0.59);
+  --modal-overlay-background-color: rgb(0, 0, 0);
+  --modal-header-background-color:white;
+  --modal-header-h2-color: black;
+  --modal-body-p-color:white;
+
 } 
 
 * {
@@ -353,7 +363,7 @@ input[type="text"]::placeholder {
   height: 80%;
    margin-top: 0cap;
   margin-bottom: 0cap;
-  background-color: rgb(0, 0, 0);
+  background-color: var(--modal-overlay-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -365,11 +375,11 @@ input[type="text"]::placeholder {
   position: absolute;
   top: 23px;
   right: 15px;
-  background: none;
+  /* background: none; */
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--model-close-background-color);
   width: 90px;
   height: 30px;
   display: flex;
@@ -388,13 +398,13 @@ input[type="text"]::placeholder {
 .modal-header {
   padding: 20px 50px 15px 20px; /* Extra right padding to avoid close button */
   border-bottom: 1px solid #eee;
-  background-color: #f9f9f9;
+  background-color:var(--modal-header-background-color);
   border-radius: 8px 8px 0 0;
 }
 
 .modal-header h2 {
   margin: 0;
-  color: #333;
+  color:var(--modal-header-h2-color);
   font-size: 1.5rem;
   line-height: 1.4;
 }
@@ -406,7 +416,7 @@ input[type="text"]::placeholder {
 
 .modal-body p {
   margin: 0;
-  color: #ffffff;
+  color:var(--modal-body-p-color);
   font-size: 1rem;
 }
 
