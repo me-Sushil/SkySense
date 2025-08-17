@@ -64,6 +64,7 @@ const Search = () => {
         lon: lon,
       })
     );
+    setSearchQry("");
     setCity([]);
     axios
       .get(
@@ -94,7 +95,7 @@ const Search = () => {
         setAQIData(response.data);
         console.log("world data AQI api including nepal", response.data);
       });
-    setSearchQry("");
+    // setSearchQry("");
   };
 
   return (
@@ -109,12 +110,13 @@ const Search = () => {
           }}
           style={{
             backgroundImage: `url(${searchlogo})`,
-            backgroundSize:"25px",
+            backgroundSize: "25px",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "left 8px center",
             paddingLeft: "40px",
           }}
         ></input>
+         {searchQry && (
         <div className="findCity">
           <ul>
             {city.length > 0 ? (
@@ -131,16 +133,18 @@ const Search = () => {
             )}
           </ul>
         </div>
+         )}
       </div>
-
       <div>
-        {" "}
         <WeatherCard
           aqi={aqiData}
           setAQIData={setAQIData}
           setWeatherResult={setWeatherResult}
           weatherResult={weatherResult}
         />
+      </div>
+      <div>
+        <NewsCard searchQry={searchQry}/>
       </div>
     </>
   );
