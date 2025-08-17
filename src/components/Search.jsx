@@ -1,16 +1,18 @@
 import searchlogo from "../assets/Search.png";
 import { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
+import NewsCard from "./NewsCard";
 import axios from "axios";
 const Search = () => {
   const [searchQry, setSearchQry] = useState("");
   const [weatherResult, setWeatherResult] = useState([]);
   const [city, setCity] = useState([]);
   const [aqiData, setAQIData] = useState([]);
+  const [selectedCity, setSelectedCity] = useState("Kathmandu")
   const [lat, setLat] = useState(27.7083);
   const [lon, setLon] = useState(85.3206);
   const apiKey = import.meta.env.VITE_API_KEY;
-  console.log(apiKey, "this is api key");
+  // console.log(apiKey, "this is api key");
 
   useEffect(() => {
     if (!searchQry) {
@@ -27,7 +29,7 @@ const Search = () => {
           setLat(response.data.lat);
           setLon(response.data.lon);
           setCity(response.data);
-          console.log(response.data, "response data");
+          console.log(response.data, "response data inside settimeout");
         })
         .catch((error) => console.log("error on response", error));
     }, 1000);
@@ -41,7 +43,7 @@ const Search = () => {
       )
       .then((response) => {
         setWeatherResult(response.data);
-        console.log(response.data);
+        console.log(response.data,"Initial fetch without search any city");
       });
 
     axios
@@ -55,6 +57,7 @@ const Search = () => {
   }, []);
 
   const handleCityClick = (city, lat, lon) => {
+    setSelectedCity(city);
     localStorage.setItem(
       `${city}`,
       JSON.stringify({
@@ -135,16 +138,16 @@ const Search = () => {
         </div>
          )}
       </div>
-      <div>
+      <div className="cards-container">
         <WeatherCard
           aqi={aqiData}
           setAQIData={setAQIData}
           setWeatherResult={setWeatherResult}
           weatherResult={weatherResult}
         />
+        <div className="NewsCard">
+        <NewsCard city={selectedCity}/>
       </div>
-      <div>
-        <NewsCard searchQry={searchQry}/>
       </div>
     </>
   );
