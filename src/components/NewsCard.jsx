@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
 const ai = new GoogleGenAI({ apiKey });
 
-const NewsCard = ({ city }) => {
+const NewsCard = ({city}) => {
   const [news, setNews] = useState([]);
 
 
-  async function main(city) {
+  async function main() {
+    console.log(city, " city inside async fn");
     const prompt = `
-You are a news researcher. Search over the internet, news portals, and articles to find the most recent top 5 news from ${city}.
+You are a news researcher. Search over the internet, news portals, and articles to find the most recent top 5 news only from ${city} or its country.
 Output format:
 - Return ONLY valid JSON (no prose).
 - An array of exactly 5 objects.
@@ -60,10 +61,10 @@ VALIDATION
       >
         Top 5 Recent News from {city}
       </div>
-      <div>
+      <div className="news">
         <ul>
           {news.map((Inews, index) => {
-            return <li key={index}>{Inews.headline}</li>;
+            return <li key={index}>{Inews.headline} ...Read More</li>;
           })}
         </ul>
       </div>

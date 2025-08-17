@@ -323,3 +323,20 @@ input[type="text"]::placeholder {
 .weatherConditionImgBig{
   margin-bottom: -12px;
 }
+
+
+
+/* Results list */
+.news ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.news li {
+  padding: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.news li:hover {
+  background: var(--findCity-liHover-background-color); /* rgba(255, 255, 255, 0.2); */
+}
