@@ -128,7 +128,7 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
                 toggle
               </button>
             </p>
-            <p>
+            <p  className="weatherCondition">
               Weather Condition : {weatherResult?.weather?.[0]?.description}{" "}
               <img
                 className="weatherConditionImg"
