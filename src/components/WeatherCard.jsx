@@ -202,6 +202,7 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
           >
             Last 5 Searched Cities
           </p>
+          <div className="fiveCityList">
           {items.map((val) => {
             return (
               <p
@@ -213,6 +214,7 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
               </p>
             );
           })}
+          </div>
           <p
             style={{
               paddingBottom: "3px",
