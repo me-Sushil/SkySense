@@ -125,7 +125,7 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
                 className="tempLogo"
               />{" "}
               <button className="BTN" onClick={changeTempreture}>
-                toggle
+                change
               </button>
             </p>
             <p  className="weatherCondition">
