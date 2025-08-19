@@ -73,7 +73,7 @@ VALIDATION
   }
   return (
     <>
-      <div
+      <div className="recentNewsCard"
         style={{
           paddingBottom: "3px",
           borderBottom: "2px solid black",

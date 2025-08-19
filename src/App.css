@@ -443,25 +443,405 @@ input[type="text"]::placeholder {
 }
 
 /* Responsive design */
+/* ====== MOBILE RESPONSIVE STYLES ====== */
+
+/* Large Mobile/Small Tablet (768px and below) */
 @media (max-width: 768px) {
-  .modal-content {
-    width: 95%;
-    max-height: 90vh;
+  /* Header adjustments */
+  .header {
+    padding: 8px 15px;
+    height: 45px;
   }
   
-  .modal-header {
-    padding: 15px 45px 10px 15px;
+  .logo {
+    height: 40px;
+    padding: 5px;
+  }
+  
+  .projectName {
+    font-size: 24px;
+  }
+  
+  .mood {
+    height: 35px;
+    width: 50px;
+  }
+  
+  .darkmood, .lightmood {
+    height: 20px;
+  }
+  
+  /* Search bar */
+  input[type="text"] {
+    width: 70%;
+    margin: 15px auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  
+  /* Cards container - stack vertically */
+  .cards-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px 10px;
+    align-items: center;
+  }
+  
+  /* Weather Card */
+  .weatherCard {
+    max-width: 95%;
+    width: 100%;
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  /* Weather Card Header */
+  .weatherCardHeader {
+    max-width: 95%;
+    width: 100%;
+    font-size: 24px;
+    height: 40px;
+    margin-top: -15px;
+    margin-right: 0;
+    position: relative;
+    left: 0;
+    transform: none;
+  }
+  
+  /* Weather card left section */
+  .weatherCard-left {
+    width: 100%;
+  }
+  
+  /* Big data section */
+  .bigData {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+    gap: 10px;
+  }
+  
+  .temp {
+    font-size: 48px;
+  }
+  
+  .cityName {
+    font-size: 22px;
+    margin-left: 0;
+  }
+  
+  .dateAndTime {
+    font-size: 14px;
+  }
+  
+  .weatherImage img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  /* Recent search city */
+  .recentSearchCity {
+    width: 96%;
+    flex: none;
+    height: auto;
+    min-height: 200px;
+    margin-top: 0;
+  }
+  
+  /* News Card */
+  .NewsCard {
+    width: 96%;
+    /* max-width: 400px; */
+    height: auto;
+    min-height: 300px;
+    padding: 15px;
+  }
+  
+  /* Find City search results */
+  .findCity {
+    position: relative;
+    right: 0;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    top: 0;
+  }
+  
+  /* Modal adjustments */
+  .modal-overlay {
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+  }
+  
+  .modal-close {
+    width: 70px;
+    height: 25px;
+    font-size: 18px;
+    top: 15px;
+    right: 10px;
+  }
+}
+
+/* Medium Mobile (480px and below) */
+@media (max-width: 480px) {
+  /* Header */
+  .header {
+    padding: 5px 10px;
+    height: 40px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .logo {
+    height: 35px;
+    padding: 3px;
+  }
+  
+  .projectName {
+    font-size: 20px;
+  }
+  
+  .mood {
+    height: 30px;
+    width: 45px;
+  }
+  
+  .darkmood, .lightmood {
+    height: 18px;
+  }
+  
+  /* Search bar */
+  input[type="text"] {
+    width: 70%;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    margin: 10px auto;
+  }
+  
+  /* Cards container */
+  .cards-container {
+    padding: 10px 5px;
+    gap: 15px;
+  }
+  
+  /* Weather Card */
+  .weatherCard {
+    max-width: 90%;
+    padding: 12px;
+  }
+  
+  /* Weather Card Header */
+  .weatherCardHeader {
+    font-size: 20px;
+    height: 35px;
+    max-width: 98%;
+  }
+  
+  /* Big data */
+  .bigData {
+    padding: 12px;
+  }
+  
+  .temp {
+    font-size: 40px;
+  }
+  
+  .cityName {
+    font-size: 20px;
+  }
+  
+  .dateAndTime {
+    font-size: 13px;
+  }
+  
+  .weatherImage img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  /* Icons */
+  .tempLogo, .humidityLogo, .windSpeedLogo, .aQIIndex {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .sunRiseImg {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .sunSetImg {
+    width: 20px;
+    height: 18px;
+  }
+  
+  .weatherConditionImg {
+    width: 35px;
+    height: 35px;
+  }
+  
+  /* Recent searches */
+  .recentSearchCity {
+    padding: 8px;
+    width: 94%;
+  }
+  
+  /* News Card */
+  .NewsCard {
+    width: 90%;
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  /* Button */
+  .BTN {
+    width: 50px;
+    height: 22px;
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 0.8rem;
+  }
+  
+  /* Modal */
+  .modal-overlay {
+    top: 2%;
+    left: 2%;
+    width: 96%;
+    height: 96%;
   }
   
   .modal-header h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   
   .modal-body {
     padding: 15px;
   }
   
-  .modal-footer {
-    padding: 10px 15px;
+  .modal-body p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  /* Header */
+  .header {
+    height: 35px;
+    padding: 3px 8px;
+  }
+  
+  .logo {
+    height: 30px;
+  }
+  
+  .projectName {
+    font-size: 18px;
+  }
+  
+  .mood {
+    height: 28px;
+    width: 40px;
+  }
+  
+  .darkmood, .lightmood {
+    height: 16px;
+  }
+  
+  /* Search bar */
+  input[type="text"] {
+    width: 70%;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  
+  /* Weather Card Header */
+  .weatherCardHeader {
+    font-size: 18px;
+    height: 32px;
+    width: 390px;
+  }
+
+  .weatherCard{
+    width:290px;
+  }
+
+  .NewsCard {
+    width: 90%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .recentSearchCity{
+    width: 94%;
+  }
+
+  
+  /* Temperature */
+  .temp {
+    font-size: 36px;
+  }
+  
+  .cityName {
+    font-size: 18px;
+  }
+  
+  .dateAndTime {
+    font-size: 12px;
+  }
+  
+  /* Weather images */
+  .weatherImage img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  /* All icons smaller */
+  .tempLogo, .humidityLogo, .windSpeedLogo, .aQIIndex {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .sunRiseImg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .sunSetImg {
+    width: 18px;
+    height: 16px;
+  }
+  
+  .weatherConditionImg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Button */
+  .BTN {
+    width: 45px;
+    height: 20px;
+    font-size: 0.7rem;
+  }
+  
+  /* Modal */
+  .modal-header h2 {
+    font-size: 1.1rem;
+  }
+  
+  .modal-body p {
+    font-size: 0.85rem;
+  }
+  
+  .modal-close {
+    width: 60px;
+    height: 22px;
+    font-size: 16px;
   }
 }
