@@ -500,13 +500,13 @@ input[type="text"]::placeholder {
   
   /* Weather Card Header */
   .weatherCardHeader {
-    max-width: 95%;
+    max-width: 100%;
     width: 100%;
     font-size: 24px;
     height: 40px;
     margin-top: -15px;
     margin-right: 0;
-    position: relative;
+    /* position: relative; */
     left: 0;
     transform: none;
   }
@@ -639,7 +639,7 @@ input[type="text"]::placeholder {
   .weatherCardHeader {
     font-size: 20px;
     height: 35px;
-    max-width: 98%;
+    max-width: 100%;
   }
   
   /* Big data */
@@ -765,7 +765,8 @@ input[type="text"]::placeholder {
   .weatherCardHeader {
     font-size: 18px;
     height: 32px;
-    width: 390px;
+    /* width: 390px; */
+    width: 100%;
   }
 
   .weatherCard{
