@@ -7,7 +7,7 @@ const DarkMode = () => {
 
   useEffect(() => {
     const savedMode = JSON.parse(localStorage.getItem("theme"));
-    if (savedMode.mode === "dark") {
+    if (savedMode?.mode === "dark") {
       setIsDarkMode(true);
       document.documentElement.setAttribute("data-theme", "dark");
     } else {
