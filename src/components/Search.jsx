@@ -20,7 +20,7 @@ const Search = () => {
       return;
     }
 
-    const geourl = `http://api.openweathermap.org/geo/1.0/direct?q=${searchQry}&limit=22&appid=${apiKey}`;
+    const geourl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchQry}&limit=22&appid=${apiKey}`;
 
     const delaySearchQry = setTimeout(() => {
       axios
