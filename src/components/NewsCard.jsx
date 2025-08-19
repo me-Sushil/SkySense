@@ -20,7 +20,7 @@ Output format:
 - An array of exactly 5 objects.
 - Each object MUST match this schema:
   {
-    "headline": "<max 15 words>",
+    "headline": "<exactly 11 words>",
     "news": "<exactly 100 words news from ${city}, concise summary with who/what/when/where/why/how; include key numbers, names, and outcomes; no opinions>",
     "publisher": "<news outlet name>",
   }
@@ -90,7 +90,7 @@ VALIDATION
           {news.map((Inews, index) => {
             return (
               <li key={index} onClick={() => handleNewsClick(Inews)}>
-                {Inews.headline} ...Read More
+                {Inews.headline}...
               </li>
             );
           })}

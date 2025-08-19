@@ -219,6 +219,7 @@ const WeatherCard = ({ weatherResult, aqi, setAQIData, setWeatherResult }) => {
               borderBottom: "2px solid black",
               display: "inline-block",
               marginBottom:"-9px",
+              marginTop:"-9px",
               fontSize: "16px",
               fontWeight: "bold",
             }}
