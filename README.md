@@ -29,7 +29,7 @@ It combines **OpenWeather API** data with an intuitive UI to deliver reliable in
 
 Clone the repo:
 
-git clone https://github.com/your-username/SkySense.git
+git clone https://github.com/me-Sushil/SkySense.git
 cd SkySense
 
 Install dependencies:
